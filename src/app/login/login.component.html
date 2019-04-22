@@ -1,36 +1,24 @@
-<!-- <div class="divObject"  >
-    <label>Login School Admin </label>
-    <form >
-    <Input placeholder="User Name" [(ngModel)]="username" name="username" type="text" required/>  
-    <Input placeholder="Password"   [(ngModel)]="password" type="password" name="password" required/> 
-      
-    <button  type="Button" (click)="login()" color="primary">Login</button>
-    <button type="Button" (click)="Reset()" color="primary">Reset</button>
-    </form> 
-</div> -->
-
-
 <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="text-center border border-light p-5">
 
-    <h3>Login School Admin </h3>
+  <h3>Login School Admin </h3>
 
-    <div class="col">
-      <input input type="text" formControlName="userName" id="defaultRegisterFormUsertName" class="form-control"
-        placeholder="User Name" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
-      <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-        <div *ngIf="f.userName.errors.required" class="errorMsg" >User Name  is required</div>
-      </div>
+  <div class="col">
+    <input input type="text" formControlName="userName" id="defaultRegisterFormUsertName" class="form-control"
+      placeholder="User Name" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+    <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+      <div *ngIf="f.userName.errors.required" class="errorMsg">User Name is required</div>
     </div>
+  </div>
 
-    <div class="col">
-        <input input type="password" formControlName="password" id="defaultRegisterFormPassword" class="form-control"
-          placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required" class="errorMsg">Password is required</div>
-        </div>
-      </div>
+  <div class="col">
+    <input input type="password" formControlName="password" id="defaultRegisterFormPassword" class="form-control"
+      placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required" class="errorMsg">Password is required</div>
+    </div>
+  </div>
 
-      <button  type="submit"  color="primary">Login</button>
-      <button type="Button" (click)="Reset()" color="primary">Reset</button>
+  <button type="submit" color="primary">Login</button>
+  <button type="Button" (click)="Reset()" color="primary">Reset</button>
 
-      </form>
+</form>

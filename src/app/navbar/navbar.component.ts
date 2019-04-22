@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   state: string = "add";
   id: number = 0;
   student: Student;
-   selectedTab = 0;
+  selectedTab = 0;
   constructor() { }
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   myCrazyCallback(formState: any) {
     this.id = formState.student.id;
     this.state = formState.state;
-    this.student =formState.student;
+    this.student = formState.student;
     this.changeTab();
   }
 

@@ -13,7 +13,7 @@ import { DocumentService } from '../services/document.service';
   templateUrl: './on-boarding-form.component.html',
   styleUrls: ['./on-boarding-form.component.css']
 })
-export class OnBoardingFormComponent implements OnInit,OnChanges {
+export class OnBoardingFormComponent implements OnInit, OnChanges {
 
   userForm: FormGroup;
   submitted = false;
@@ -21,12 +21,12 @@ export class OnBoardingFormComponent implements OnInit,OnChanges {
   documentValue: [];
   selectedLevel: string = '';
   isChecked: Array<boolean>;
-  @Input() id: number; 
-  @Input() state: string; 
-  @Input() student: Student; 
+  @Input() id: number;
+  @Input() state: string;
+  @Input() student: Student;
   categories = CategoryType;
   categoryList: Array<ListItem> = new Array<ListItem>();
-  
+
 
   constructor(private formBuilder: FormBuilder, private service: DocumentService, private studentService: StudentService) {
 
@@ -44,23 +44,23 @@ export class OnBoardingFormComponent implements OnInit,OnChanges {
       score: ['', [Validators.required]]
     });
     this.addCheckboxes();
-    
+
   }
-   
-ngOnChanges (){
-  if(this.student){
-    this.userForm.controls['studentName'].setValue(this.student?this.student.name:'');
-    // this.userForm.controls['categoryControl'].setValue(this.student?this.student.category:'Domestic');
-    this.userForm.controls['documentslist'].setValue(this.student?this.student.documents:'no Name exits');
-    this.userForm.controls['dob'].setValue(this.student?this.student.dob:new Date());
-    this.userForm.controls['fatherName'].setValue(this.student?this.student.fatherName:'');
-    this.userForm.controls['motherName'].setValue(this.student?this.student.motherName:'');
-    this.userForm.controls['score'].setValue(this.student?this.student.score:0);
+
+  ngOnChanges() {
+    if (this.student) {
+      this.userForm.controls['studentName'].setValue(this.student ? this.student.name : '');
+      // this.userForm.controls['categoryControl'].setValue(this.student?this.student.category:'Domestic');
+      this.userForm.controls['documentslist'].setValue(this.student ? this.student.documents : 'no Name exits');
+      this.userForm.controls['dob'].setValue(this.student ? this.student.dob : new Date());
+      this.userForm.controls['fatherName'].setValue(this.student ? this.student.fatherName : '');
+      this.userForm.controls['motherName'].setValue(this.student ? this.student.motherName : '');
+      this.userForm.controls['score'].setValue(this.student ? this.student.score : 0);
+    }
+
+
   }
-  
-  
-}
- 
+
 
 
   // convenience getter for easy access to form fields
@@ -93,9 +93,9 @@ ngOnChanges (){
       // const control = new FormControl(i === 0, [this.dynamicRequiredValidator.bind(this, o)]); // if first item set to true, else false
       const control = new FormControl(i === 0, [Validators.required]); // if first item set to true, else false
 
-       (this.userForm.controls.documentslist as FormArray).push(control);
-        //(this.userForm.controls.documentslist as FormArray).controls[o.id] = new FormControl('', []);
-       //(this.userForm.controls.documentslist as FormArray).controls[o.id] = control;
+      (this.userForm.controls.documentslist as FormArray).push(control);
+      //(this.userForm.controls.documentslist as FormArray).controls[o.id] = new FormControl('', []);
+      //(this.userForm.controls.documentslist as FormArray).controls[o.id] = control;
     });
   }
 
@@ -136,9 +136,9 @@ ngOnChanges (){
   }
   keys(): Array<string> {
     let keys = Object.keys(this.categories);
-   
+
     return keys.slice(keys.length / 2);
   }
 
-  get formData { return this.userForm.get('documentslist'); }
+  get formData() { return this.userForm.get('documentslist')['controls']; }
 }
