@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   state: string = "add";
   id: number = 0;
   student: Student;
-  private selectedTab = 0;
+   selectedTab = 0;
   constructor() { }
 
   ngOnInit() {

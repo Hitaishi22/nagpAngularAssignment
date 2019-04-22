@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
 
    login = function () {
-    debugger;
      if(this.username == 'admin' && this.password == 'admin'){
       this.router.navigateByUrl('onBoardingForm');
     }else {

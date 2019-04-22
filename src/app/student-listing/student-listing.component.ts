@@ -13,6 +13,7 @@ export class StudentListingComponent implements OnInit {
 
   students;
   allStudents;
+  searchText;
   text;
   oldText
   appState = 'default';

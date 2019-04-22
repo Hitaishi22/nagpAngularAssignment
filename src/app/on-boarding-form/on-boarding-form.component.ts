@@ -24,7 +24,6 @@ export class OnBoardingFormComponent implements OnInit,OnChanges {
   @Input() id: number; 
   @Input() state: string; 
   @Input() student: Student; 
-
   categories = CategoryType;
   categoryList: Array<ListItem> = new Array<ListItem>();
   
@@ -142,5 +141,9 @@ ngOnChanges (){
     let keys = Object.keys(this.categories);
     return keys.slice(keys.length / 2);
   }
+
+  getControls(frmGrp: FormGroup, key: string) {
+      return (<FormArray>frmGrp.controls[key]).controls;
+  } 
 
 }
