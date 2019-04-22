@@ -1,0 +1,41 @@
+<div id="listOfStudents">
+<div style="float: Right; padding-right: 50px">
+    <input type="search" [(ngModel)]="searchText" placeholder="Search student">
+</div>
+
+<div style="float:left; padding-left: 50px">
+    <select [(ngModel)]="selectedCategory" (ngModelChange)="onSelect()">
+        <option *ngFor="let option of options" 
+                [value]="option"> 
+          {{ option }}
+        </option>
+   </select>
+</div>
+
+    <h3>Student List</h3>
+    <ul *ngFor="let student of students | filter: searchText">
+        <!-- <span class="todoItem"(click)="editTodo(student)">{{student.name}}</span> -->
+        <span class="todoItem"(click)="editTodo(student)">{{student.name}}</span><button class="editBtn"(click)="editStudent(student)"> Edit</button><button class="deleteBtn"(click)="deleteStudents(student)"> x</button>
+    </ul>
+
+
+<!-- 
+<div *ngIf="appState == 'default'">
+  <h3>Add Student</h3>
+  <form (submit)="addTodo()">
+    <input type="text" [(ngModel)]="text" name="text">
+  </form>
+  </div>
+  
+  <div *ngIf="appState == 'edit'">
+    <h3>Edit Studnet</h3>
+  <form (submit)="updateTodo()">
+    <input type="text" [(ngModel)]="text" name="text">
+  </form>
+  </div>-->
+  
+  <!-- <h3>Student List</h3>
+  <ul *ngFor="let student of students | filter: searchText">
+    <span class="todoItem"(click)="editTodo(student)">{{student.name}}</span><button class="deleteBtn"(click)="deleteStudents(student)"> x</button>
+  </ul>  -->
+</div>

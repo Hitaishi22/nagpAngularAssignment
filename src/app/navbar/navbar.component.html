@@ -1,0 +1,8 @@
+<mat-tab-group [selectedIndex]="selectedTab">
+  <mat-tab label="On Boarding Forms">
+    <app-on-boarding-form [state]="state" [student]="student" [id]="id"></app-on-boarding-form>
+  </mat-tab>
+  <mat-tab label="List Of students">
+    <app-student-listing (getStudentIdChange)="myCrazyCallback($event)"  ></app-student-listing>  
+  </mat-tab>
+</mat-tab-group>

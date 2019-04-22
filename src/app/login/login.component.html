@@ -1,0 +1,10 @@
+<div class="divObject"  >
+    <label>Login School Admin </label>
+    <form >
+    <Input placeholder="User Name" [(ngModel)]="username" name="username" type="text" required/>  
+    <Input placeholder="Password"   [(ngModel)]="password" type="password" name="password" required/> 
+      
+    <button  type="Button" (click)="login()" color="primary">Login</button>
+    <button type="Button" (click)="Reset()" color="primary">Reset</button>
+    </form>  
+</div>

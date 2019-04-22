@@ -1,0 +1,21 @@
+.divObject button
+{
+display: inline;
+margin: 30px;
+}
+
+.divObject input
+{
+display: block;
+margin: 50px;
+}
+
+.divObject
+{
+border-style: solid;
+text-align: center;
+align-content: center;
+margin: 50px;
+max-width: 80%;
+max-height: 80%;
+}

@@ -1,0 +1,81 @@
+    <ng-container>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" class="text-center border border-light p-5">
+
+        <h3>On Boarding Form</h3>
+
+        <div class="col">
+          <label>Student Name:</label>
+          <input input type="text" formControlName="studentName" id="defaultRegisterFormStudenttName"
+            class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f.studentName.errors }" />
+          <div *ngIf="submitted && f.studentName.errors" class="invalid-feedback">
+            <div *ngIf="f.studentName.errors.required" class="error">Student Name is required</div>
+            <div *ngIf="f.studentName.errors.pattern" class="error">Please Enter Valid Student Name</div>
+
+          </div>
+        </div>
+
+        <div class="col">
+          Category:
+          <select class="form-control" id="defaultRegisterFormcateogory" formControlName="categoryControl" required
+            (change)="selectChangeHandler($event)">
+            <option *ngFor="let category of keys()" [ngValue]="category">{{category}}</option>
+          </select>
+        </div>
+
+        <div class="col">
+          Documents:
+          <label formArrayName="documentslist"
+            *ngFor="let order of userForm.controls.documentslist.controls; let i = index">
+            <input type="checkbox" [formControlName]="i" id="defaultRegisterFormDocuments" class="form-control mb-4" />
+            {{documentslist[i].name}}
+          </label>
+        </div>
+
+        <div class="col">
+          DOB:
+          <input type="date" formControlName="dob" id="defaultRegisterFormDOB" class="form-control"
+            placeholder="DOB(calendar)" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+          <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+            <div *ngIf="f.dob.errors.required" class="error">Date of birth is required</div>
+          </div>
+        </div>
+        <div class="col">
+          Father’s Name:
+          <input type="text" formControlName="fatherName" id="defaultRegisterFormFathertName" class="form-control"
+            placeholder="Father’s Name" [ngClass]="{ 'is-invalid': submitted && f.fatherName.errors }" />
+          <div *ngIf="submitted && f.fatherName.errors" class="invalid-feedback">
+            <div *ngIf="f.fatherName.errors.required" class="error">Father’s Name is required</div>
+            <div *ngIf="f.fatherName.errors.pattern" class="error">Please Enter Valid Father's Name</div>
+          </div>
+        </div>
+        <div class="col">
+          Mother’s Name:
+          <input type="text" formControlName="motherName" id="defaultRegisterFormMotherName" class="form-control"
+            placeholder="Mother’s Name" [ngClass]="{ 'is-invalid': submitted && f.motherName.errors }" />
+          <div *ngIf="submitted && f.motherName.errors" class="invalid-feedback">
+            <div *ngIf="f.motherName.errors.required" class="error">Mother’s Name is required</div>
+            <div *ngIf="f.motherName.errors.pattern" class="error">Please Enter Valid Mother’s's Name</div>
+
+          </div>
+        </div>
+
+        <div class="col">
+          Last class score:
+          <input type="number" formControlName="score" id="defaultRegisterFormScore" class="form-control"
+            placeholder="%(marks)" [ngClass]="{ 'is-invalid': submitted && f.score.errors }" />
+          <div *ngIf="submitted && f.score.errors" class="invalid-feedback">
+            <div *ngIf="f.score.errors.required" class="error">Score is required</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <button class="btn btn-primary" type="submit">On Board</button>
+        </div>
+
+        <hr>
+
+      </form>
+    </ng-container >
+  
+
