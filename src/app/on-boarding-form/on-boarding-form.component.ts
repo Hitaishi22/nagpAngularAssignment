@@ -48,7 +48,6 @@ export class OnBoardingFormComponent implements OnInit,OnChanges {
   }
    
 ngOnChanges (){
-  debugger;
   if(this.student){
     this.userForm.controls['studentName'].setValue(this.student?this.student.name:'');
     // this.userForm.controls['categoryControl'].setValue(this.student?this.student.category:'Domestic');
@@ -72,7 +71,6 @@ ngOnChanges (){
     //update the ui
     this.selectedLevel = event.target.value[0];
     if (this.selectedLevel == "0") {
-      debugger;
       this.documentslist.map((o, i) => {
         if (!o.isMandatory) {
           (this.userForm.controls['documentslist'] as FormArray).controls[o.id].clearValidators();
@@ -95,7 +93,6 @@ ngOnChanges (){
       // const control = new FormControl(i === 0, [this.dynamicRequiredValidator.bind(this, o)]); // if first item set to true, else false
       const control = new FormControl(i === 0, [Validators.required]); // if first item set to true, else false
 
-      debugger;
        (this.userForm.controls.documentslist as FormArray).push(control);
         //(this.userForm.controls.documentslist as FormArray).controls[o.id] = new FormControl('', []);
        //(this.userForm.controls.documentslist as FormArray).controls[o.id] = control;
@@ -124,10 +121,9 @@ ngOnChanges (){
 
   onSubmit(userForm) {
     this.submitted = true;
-    // if (this.userForm.invalid) {
-    //   return;
-    // } else {
+    debugger;
     let student = new Student();
+    student.name = userForm.value.studentName;
     student.category = userForm.value.categoryControl;
     student.documents = this.isChecked;
     student.dob = userForm.value.dob;
@@ -135,15 +131,12 @@ ngOnChanges (){
     student.motherName = userForm.value.motherName;
     student.score = userForm.value.score;
     this.studentService.addStudents(student);
+    alert("Successfully Added");
+    this.userForm.reset();
   }
-
   keys(): Array<string> {
     let keys = Object.keys(this.categories);
+   
     return keys.slice(keys.length / 2);
   }
-
-  getControls(frmGrp: FormGroup, key: string) {
-      return (<FormArray>frmGrp.controls[key]).controls;
-  } 
-
 }

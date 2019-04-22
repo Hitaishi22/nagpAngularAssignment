@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,25 +10,34 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
-  username: string;
-  password: string;
+  constructor(private router: Router,private formBuilder: FormBuilder) { }
+  loginForm: FormGroup;
+  submitted = false;
 
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', [Validators.required]],
+      password: ['',Validators.required]
+    });
+
   }
 
-   login = function () {
-     if(this.username == 'admin' && this.password == 'admin'){
-      this.router.navigateByUrl('onBoardingForm');
+  login(loginForm) {
+    this.submitted = true;
+     if(loginForm.value.userName == 'admin' && loginForm.value.password == 'admin'){
+      this.router.navigateByUrl('\student');
     }else {
-      alert("Invalid credentials");
+     alert("Invalid Creditionals");return;
     }
-  };
+    loginForm.reset();
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
   
   Reset(): void {
-    this.router.navigate(["login"]);
-
+    this.loginForm.reset();
   }
 
 }

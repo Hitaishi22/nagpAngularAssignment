@@ -26,7 +26,7 @@
     <div class="col">
       Documents:
       <label formArrayName="documentslist"
-        *ngFor="let order of getControls(userForm, 'controls.documentslist'); let i = index">
+        *ngFor="let order of this.userForm.controls.documentslist.controls; let i = index">
         <input type="checkbox" [formControlName]="i" id="defaultRegisterFormDocuments" class="form-control mb-4" />
         {{documentslist[i].name}}
       </label>

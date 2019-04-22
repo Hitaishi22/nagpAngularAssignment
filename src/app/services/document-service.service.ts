@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class DocumentServiceService {
 
-  private _postsURL = "http://www.mocky.io/v2/5cb6d232320000e110cd4600";
+  private _postsURL = "http://www.mocky.io/v2/5cbe2efe2f0000c70e16d07a";
   private product : Observable<Document[]>;
   constructor(private httpClient: HttpClient) { }
   /**
